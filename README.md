@@ -1,39 +1,84 @@
-# Tech Test
 
-You have been provided with an in-development Android app. The application uses an API to display lists of data about characters from the show "Game of Thrones". The project has some bugs and notable UI mismatches compared to the given designs.
+# Game of Thrones Character Explorer App
 
-## Some issues that have been reported
+## 🧪 Tech Test Submission – Android App (Jetpack Compose)
 
-- App crashes on launch
-- Major discrepancies with the designs e.g. white padding
+This Android app is a dynamic and responsive interface for browsing Game of Thrones characters using a remote API. Built using modern Android development tools such as **Jetpack Compose**, **Kotlin**, and **Retrofit**, it delivers a smooth, scrollable, and themed UI with enriched character data.
 
-## Improvements required
+---
 
-- A new feature needs to be added that would allow a user to search the list by character name.
+## 🛠️ Key Features
 
-## Resources
+- ✅ **Jetpack Compose UI** – Clean, scrollable interface powered by Compose.
+- ✅ **API Integration** – Connects to an authenticated API to fetch character data.
+- ✅ **Search Functionality** – Real-time character filtering by name.
+- ✅ **Image Overlay Background** – Game of Thrones aesthetic using `R.drawable.img_characters`.
+- ✅ **Season Display Logic** – Transforms `"Season X"` strings into Roman numerals.
 
-The API endpoint is available from:
-[https://yj8ke8qonl.execute-api.eu-west-1.amazonaws.com/characters](https://yj8ke8qonl.execute-api.eu-west-1.amazonaws.com/characters)
-Requests to that endpoint will require the following header:
-"Authorization": "Bearer 754t!si@glcE2qmOFEcN"
+---
 
-Designs: 
+## 🧩 Tech Stack
 
-![img_design_1.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fimg_design_1.png) ![img_design_2.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fimg_design_2.png)
+| Layer         | Technology                              |
+|--------------|-----------------------------------------|
+| UI           | Jetpack Compose                         |
+| Architecture | MVVM-like (ViewModel, Repository, Data) |
+| Networking   | Retrofit, OkHttp, Gson                  |
+| Testing      | JUnit, Mockito, Compose UI Test         |
 
-## Criteria on which we will assess your submission
+---
 
-- Closeness to designs (pragmatism is encouraged and pixel perfection is NOT required)
-- Code quality, included but not limited to, design patterns and organisation of the application code
-- Scalability
-- Error handling
-- Unit tests
+## ✅ What Was Fixed / Improved
 
-## Submission details
+| Area                 | Before (Old Version)                                            | After (Improved Version)                                                                 |
+|----------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| `ApiCharacter` Model | `aliases: List<Int>` → caused crashes                           | Changed to `List<String>` to match actual API structure                                  |
+| API Handling         | No null safety, potential crashes                               | Default/null-safe values and improved deserialization                                    |
+| UI/UX                | Missing padding, layout bugs, hard to read                      | Improved spacing, styling, and visual hierarchy                                           |
+| Search Bar           | ❌ Missing                                                      | ✅ Real-time search, case-insensitive                                                     |
+| Error Handling       | Not implemented                                                 | Network failure messages + retry logic                                                   |
+| Code Structure       | Single-file logic                                               | Separated into layers for maintainability (UI, Data, ViewModel, etc.)                   |
+| Unit Tests           | None                                                            | Added unit tests for formatting + ViewModel logic                                        |
+| UI Tests             | Not present                                                     | Added Compose-based UI tests for filtering and rendering                                |
 
-We would like you to fix the app's user facing issues (both documented and undocumented), add the additional search feature and submit the codebase in a more scalable state.
+---
 
-Please use version control. Import the supplied code as is to git and commit your changes through that. This will allow us to review the changes you have made.
+## 🧪 Testing Coverage
 
-We expect you should spend no more than 3 hours on this work. We appreciate you taking the time to work on this and understand that sometimes it's not possible to spend as much time as you would like. If there are any aspects of the codebase you would have liked to work on with more time, please detail these in the ReadME file to give us some insight in to your process.
+### ✅ Unit Tests
+- `formatSeasons()` function – Season conversion logic.
+- `CharacterViewModel` – API response handling, loading states, and fallback.
+
+### ✅ UI Tests
+- Visibility of UI components
+- Filtered results validation
+- Character detail rendering
+
+---
+
+
+## 📷 Screenshots
+
+| Search Feature                            | Character List View                        |
+|------------------------------------------|--------------------------------------------|
+| ![Search Screenshot](screenshots/app_search_view.png) | ![Character List Screenshot](screenshots/app_character_list.png) |
+
+---
+
+## 🌟 Notes
+
+- This version prioritizes **clean architecture**, **UI responsiveness**, and **user-friendly error handling**.
+- Fully adheres to modern Android practices with `ViewModel`, `LiveData`, and `Compose`.
+
+## 🚀 Future Features & Improvements
+Below are potential enhancements that could further improve the app and elevate the user experience:
+### 🌐 1. Pagination & Infinite Scrolling Implement paging support to efficiently load large datasets and improve performance.
+### 🔍 2. Advanced Filters Enable users to filter characters by culture, alive/dead status, seasons appeared in, and more.
+### 💾 3. Offline Support Cache character data locally to allow viewing without an internet connection.
+### 🎨 4. Character Detail Screen Tap on a character to view detailed biography, images, and history.
+
+---
+
+## 🙌 Credits
+
+Created by Emmanuel Obafemi Buraimo as part of a technical assessment for CreateFuture.
